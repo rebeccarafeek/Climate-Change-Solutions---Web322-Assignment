@@ -1,0 +1,21 @@
+<!-- a reusable template for the navbar -->
+<nav class="navbar bg-white shadow-md px-4 py-2 relative z-50">
+  <div class="flex justify-between w-full items-center">
+    <a href="/" class="text-xl font-bold text-green-600 <%= (page == "/") ? 'active' : '' %>">Home</a>
+    
+    <div class="hidden lg:flex gap-4 items-center">
+      <a class="<%= (page == "/about") ? 'active' : '' %>" href="/about">About</a>
+      <a class="<%= (page == "/solutions/addProject") ? 'active' : '' %>" href="/solutions/addProject">Add Project</a>
+
+      <!-- dropdown menu for sectors -->
+      <div class="dropdown dropdown-hover dropdown-end">
+        <label tabindex="0" class="btn btn-ghost">Sector</label>
+        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-white rounded-box w-64">
+          <li><a class="<%= (page == "/solutions/projects" && sector == "2") ? 'active' : '' %>" href="/solutions/projects?sector=2">Industry</a></li>
+          <li><a class="<%= (page == "/solutions/projects" && sector == "3") ? 'active' : '' %>" href="/solutions/projects?sector=3">Transportation</a></li>
+          <li><a class="<%= (page == "/solutions/projects" && sector == "4") ? 'active' : '' %>" href="/solutions/projects?sector=4">Electricity</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

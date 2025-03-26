@@ -1,0 +1,141 @@
+<!doctype html>
+
+<html lang="en-CA" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Edit Project</title>
+    <link href="/css/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <%- include('partials/navbar', {page: '' }) %>
+<div class="container mx-auto px-4">
+    <div class="hero bg-base-200 min-h-[40vh] mb-8">
+      <div class="hero-content text-center">
+        <div class="max-w-md">
+          <h1 class="text-5xl font-bold">Edit a project</h1>
+          <p class="py-6">Edit: <%= project.title %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md mb-8">
+        <form method="POST" action="/solutions/editProject">
+          <!-- hides id from user to track on backend the project being edited -->
+          <input type="hidden" name="id" value="<%= project.id %>">
+          
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
+              Project Title
+            </label>
+            <input 
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+              id="title" 
+              name="title" 
+              type="text" 
+              placeholder="Project Title" 
+              value="<%= project.title %>"
+              required>
+          </div>
+  
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="feature_img_url">
+            Image URL
+            </label>
+            <input 
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+              id="feature_img_url" 
+              name="feature_img_url" 
+              type="url" 
+              placeholder="https://example.com/image.jpg" 
+              value="<%= project.feature_img_url %>"
+              required>
+          </div>
+  
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="sector_id">
+              Sector
+            </label>
+            <select 
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+              id="sector_id" 
+              name="sector_id" 
+              required>
+              <option value="">Select a sector</option>
+              <% sectors.forEach(sector=>{ %>
+                <option <%= (project.sector_id == sector.id) ? "selected" : "" %> value="<%= sector.id %>">
+                  <%= sector.sector_name %>
+                </option>
+              <% }) %>
+            </select>
+          </div>
+  
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="intro_short">
+              Introduction
+            </label>
+            <textarea 
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+              id="intro_short" 
+              name="intro_short" 
+              placeholder="Include a brief introduction to the project" 
+              rows="4" 
+              required><%= project.intro_short %></textarea>
+          </div>
+  
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="summary_short">
+              Summary
+            </label>
+            <textarea 
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+              id="summary_short" 
+              name="summary_short" 
+              placeholder="Include a short summary of the project" 
+              rows="3" 
+              required><%= project.summary_short %></textarea>
+          </div>
+  
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="impact">
+              Impact
+            </label>
+            <textarea 
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+              id="impact" 
+              name="impact" 
+              placeholder="Describe the project's impact..." 
+              rows="6" 
+              required><%= project.impact %></textarea>
+          </div>
+  
+          <div class="mb-6">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="original_source_url">
+            Source URL
+            </label>
+            <input 
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+              id="original_source_url" 
+              name="original_source_url" 
+              type="url" 
+              placeholder="https://example.com/source" 
+              value="<%= project.original_source_url %>"
+              required>
+          </div>
+  
+          <div class="flex items-center justify-between">
+            <button 
+              class="btn btn-primary" 
+              type="submit">
+              Update Project
+            </button>
+            <a href="/solutions/deleteProject/<%= project.id %>" class="btn btn-error">
+                Delete Project
+            <a href="/solutions/projects" class="btn btn-outline">
+              Cancel
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+  </html>

@@ -1,0 +1,24 @@
+<!doctype html>
+
+<html lang="en-CA" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Climate Solutions</title>
+    <link href="/css/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <%- include('./partials/navbar', {page: ''}) %>
+
+    <div class="hero bg-base-200 min-h-screen">
+      <div class="hero-content text-center">
+        <div class="max-w-md">
+          <h1 class="text-5xl font-bold">Error: 404</h1>
+          <p class="py-6">
+            <%= message || "Sorry, the page you've requested does not exist." %>
+          </p>
+          <a href="/" class="btn btn-primary">Return to Home</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

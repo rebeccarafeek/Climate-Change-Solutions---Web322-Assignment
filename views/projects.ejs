@@ -1,0 +1,64 @@
+<!doctype html>
+
+<html lang="en-CA" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Climate Solutions</title>
+    <link href="/css/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <%- include('./partials/navbar', {page: "/solutions/projects", sector: sector || ''}) %>
+
+    <div class="container mx-auto px-4 py-8">
+      <div class="hero bg-base-200 min-h-[40vh] mb-8">
+        <div class="hero-content text-center">
+          <div class="max-w-md">
+            <h1 class="text-5xl font-bold">Projects</h1>
+            <p class="py-6">Explore our climate solution projects.</p>
+            
+            <div class="flex flex-wrap justify-center gap-2 mt-2">
+              <a href="/solutions/projects?sector=2" class="btn btn-sm <%= sector == '2' ? 'btn-primary' : 'btn-outline' %>">Industry</a>
+              <a href="/solutions/projects?sector=3" class="btn btn-sm <%= sector == '3' ? 'btn-primary' : 'btn-outline' %>">Transportation</a>
+              <a href="/solutions/projects?sector=4" class="btn btn-sm <%= sector == '4' ? 'btn-primary' : 'btn-outline' %>">Electricity</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="table table-zebra w-full">
+          <thead>
+            <tr>
+              <th>Project Title</th>
+              <th>Sector</th>
+              <th>Summary</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for (const project of projects) { %>
+              <tr>
+                <td><%= project.title %></td>
+                <td>
+                  <a href="/solutions/projects?sector=<%= project.sector_id %>" class="btn btn-sm btn-outline">
+                    <%= project.Sector.sector_name %>
+                  </a>
+                </td>
+                <td><%= project.summary_short %></td>
+                <td>
+                  <a href="/solutions/projects/<%= project.id %>" class="btn btn-sm btn-primary">details</a>
+                </td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+      <!--can use conditions in ejs-->
+      <% if (!projects || projects.length === 0) { %>
+        <div class="text-center py-8">
+          <p>No projects found.</p>
+        </div>
+      <% } %>
+    </div>
+  </body>
+</html>
