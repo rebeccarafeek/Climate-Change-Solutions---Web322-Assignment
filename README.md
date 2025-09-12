@@ -1,21 +1,24 @@
-Climate Solutions Website
+**Climate Solutions Website**
+
 Final project for Web322 course - a web application for managing climate change solutions with full CRUD functionality.
-🌍 Live Demo
-Features
+🌍 Live Demo on Vercel: https://web322-a5-roan.vercel.app
+
+**Features**
 
 Browse, add, edit, and delete climate solutions
 RESTful API implementation
 Responsive design with Tailwind CSS
 Deployed on Vercel
 
-Technologies
+**Technologies**
 
 Node.js/Express.js
 Tailwind CSS
 RESTful API
 Vercel deployment
 
-Setup
+**Setup**
+
 bashgit clone [repository-url]
 cd climate-solutions-website
 npm install
