@@ -20,6 +20,9 @@ Final project for Web322 course - a web application for managing climate change 
 - PostgreSQL (managed with pgAdmin) 
 - Vercel deployment
 
+## Deployment
+- Deployed using Vercel at: https://web322-a5-roan.vercel.app 
+
 ## Setup
 ```bash
 git clone [repository-url]
